@@ -1,24 +1,25 @@
 const { allDiets, filterId, createFood, getAllName } = require('../controllers/Controllers')
 
-const recipesId = async (req, res) =>{
+const projectsIdController = async (req, res) =>{
+    res.status(200).json("proyectos por id")
 }
 
-const listOfRecipes = async (req, res) =>{
-
+const allProjectsController = async (req, res) =>{
+    res.status(200).json("todos los proyectos")
 }
 
-const dietsList = async (req, res) =>{
+const deleteProjectController = async (req, res) =>{
+    res.status(200).json("se borro un proyecto")
+}
    
-}
-   
-const createRecipe = async (req, res) =>{
-     
+const createProjectController = async (req, res) =>{
+    res.status(200).json("se creo un proyecto")
 }
 
 
 module.exports = {
-    recipesId,
-    listOfRecipes,
-    dietsList,
-    createRecipe
+    projectsIdController,
+    allProjectsController,
+    createProjectController,
+    deleteProjectController
 }
