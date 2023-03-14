@@ -15,7 +15,18 @@ module.exports = (sequelize) => {
     },    
   },
   {timestamps: false}
-  )
+  );
+  sequelize.define('projects',{
+    id:{},
+    name:{},
+    title:{},
+    description:{},
+    image:{},
+    complete:{},
+    delete:{},
+    location:{},
+    
+  })
 };
 
 
