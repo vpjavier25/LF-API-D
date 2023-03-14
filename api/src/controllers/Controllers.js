@@ -1,30 +1,43 @@
-const axios = require("axios")
 const { where } = require("sequelize")
-const { Recipe, Diet, recipe_diet } = require('../db')
-const {API_KEY} = process.env
+const { Projects } = require('../db')
 
 
-const filterId = async (id, source) => {
+
+const getAllProjects = async () => {  
+    const projects = await Projects.findAll()
+    return projects
+}
+
+/* const filterId = async (id, source) => {
 
 } 
 
-const getAllName = async () => {  
-  
-}
-
 const allDiets = async () => {
 
-}
+} */
 
-const createFood = async (name, image, description, healthScore, steps, diets) => {
-    
+const createProject = async (name, title, description, image, complete, deleted, location, cost, currentAmount) => {
+    const newProject = await Projects.create({name, title, description, image, complete, deleted, location, cost, currentAmount})
+
+        return {
+            id: newProject.id,
+            name: name,
+            title: title,
+            description: description,
+            image: image,
+            complete: complete,
+            deleted: deleted,
+            location: location,
+            cost: cost,
+            currentAmount: currentAmount
+        }
 }
 
 
 
 module.exports = {
-    allDiets,
-    filterId,
-    createFood,
-    getAllName,
+    /* allDiets,
+    filterId, */
+    createProject,
+    getAllProjects,
 }
