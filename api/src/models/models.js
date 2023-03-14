@@ -94,7 +94,7 @@ module.exports = (sequelize) => {
       allowNull:false
     },
     phonenumber:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       allowNull:false
     },
     city:{
