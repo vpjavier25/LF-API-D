@@ -33,6 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Projects, User, Type, Person } = sequelize.models;
 
 // Aca vendrian las relaciones
+
 User.hasMany(Projects)
 User.hasOne(Type)
 Person.hasOne(User)
