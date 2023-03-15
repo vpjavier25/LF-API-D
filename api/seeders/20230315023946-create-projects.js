@@ -12,7 +12,7 @@ module.exports = {
         description: "Descripcion 2",
         image: "",
         complete: false,
-        delete: false,
+        deleted: false,
         location: "Colombia",
       }
     ];

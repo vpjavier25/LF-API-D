@@ -1,22 +1,22 @@
 {
     "development": {
-    "username": "postgres",
-    "password": "ahhh",
-    "database": "linkingfuture",
+    "username": "<username>",
+    "password": "<password>",
+    "database": "<database>",
     "host": "localhost",
     "dialect": "postgres"
 },
     "test": {
-    "username": "postgres",
-    "password": "ahhh",
-    "database": "linkingfuture",
+    "username": "<username>",
+    "password": "<password>",
+    "database": "<database>",
     "host": "localhost",
     "dialect": "postgres"
     },
     "production": {
-    "username": "postgres",
+    "username": "<username>",
     "password": null,
-    "database": "linkingfuture",
+    "database": "<database>",
     "host": "localhost",
     "dialect": "postgres"
     }

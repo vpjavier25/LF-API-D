@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING,
       allowNull: true
     },
-    complete:{
+    completed:{
       type:DataTypes.BOOLEAN,
       allowNull:true
     },
@@ -85,14 +85,14 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING,
       allowNull:true
     },
-    description:{
+/*     description:{
       type:DataTypes.STRING,
       allowNull:false
-    },
-    address:{
+    }, */
+ /*    address:{
       type:DataTypes.STRING,
       allowNull:false
-    },
+    }, */
     phonenumber:{
       type:DataTypes.STRING,
       allowNull:false
