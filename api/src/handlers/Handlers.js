@@ -11,7 +11,7 @@ const allProjectsController = async (req, res) =>{
 const deleteProjectController = async (req, res) =>{
     res.status(200).json("se borro un proyecto")
 }
-   
+
 const createProjectController = async (req, res) =>{
     res.status(200).json("se creo un proyecto")
 }
