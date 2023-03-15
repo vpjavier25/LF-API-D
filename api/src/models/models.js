@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       type:DataTypes.BOOLEAN,
       allowNull:true
     },
-    delete:{
+    deleted:{
       type:DataTypes.BOOLEAN,
       allowNull:false
     },
