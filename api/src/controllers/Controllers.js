@@ -9,18 +9,16 @@ const getAllProjects = async () => {
 }
 
 /* const filterId = async (id, source) => {
-
 } 
-
 const allDiets = async () => {
-
 } */
 
-const createProject = async (name, title, description, image, complete, deleted, location, cost, currentAmount) => {
-    const newProject = await Projects.create({name, title, description, image, complete, deleted, location, cost, currentAmount})
+const createProject = async (id_user ,name, title, description, image, complete, deleted, location, cost, currentAmount) => {
+    const newProject = await Projects.create({id_user, name, title, description, image, complete, deleted, location, cost, currentAmount})
 
         return {
             id: newProject.id,
+            userId: id_user,
             name: name,
             title: title,
             description: description,
