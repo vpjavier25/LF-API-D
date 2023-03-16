@@ -9,10 +9,6 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    id_user:{
-      type: DataTypes.STRING,
-      allowNull:false
-    },
     name:{
       type: DataTypes.STRING,
       allowNull: false,
@@ -29,7 +25,7 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING,
       allowNull: true
     },
-    complete:{
+    completed:{
       type:DataTypes.BOOLEAN,
       allowNull:true
     },
@@ -84,14 +80,6 @@ module.exports = (sequelize) => {
     bankinfo:{
       type:DataTypes.STRING,
       allowNull:true
-    },
-    description:{
-      type:DataTypes.STRING,
-      allowNull:false
-    },
-    address:{
-      type:DataTypes.STRING,
-      allowNull:false
     },
     phonenumber:{
       type:DataTypes.STRING,
