@@ -9,8 +9,6 @@ module.exports = {
       name: "Juan",
       lastname: "Perez",
       bankinfo: "1324657987",
-      description: "hola",
-      address: "Colombia",
       phonenumber: "798465",
       city: "Medallo"
     },
@@ -19,8 +17,6 @@ module.exports = {
       name: "Pedro",
       lastname: "Camejo",
       bankinfo: "1324657987",
-      description: "hola",
-      address: "Colombia",
       phonenumber: "798465",
       city: "Medallo"
     },
@@ -29,8 +25,6 @@ module.exports = {
       name: "Pepe",
       lastname: "Blanco",
       bankinfo: "1324657987",
-      description: "hola",
-      address: "Colombia",
       phonenumber: "798465",
       city: "Bogotá"
     }]
