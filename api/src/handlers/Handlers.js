@@ -27,7 +27,7 @@ const createProjectController = async (req, res) =>{
     }
 }
 
-const createUserController = async (req, res) =>{
+const createPersonController = async (req, res) =>{
     const {name, lastname, bankinfo, description, address, phonenumber, city} = req.body
     try {
        const postPerson = await createPerson(name, lastname, bankinfo, description, address, phonenumber, city)
@@ -37,10 +37,15 @@ const createUserController = async (req, res) =>{
     }
 }
 
+const createUserController = async (req, res) =>{
+    res.status(200).json("se creo un usuario")
+}
+
 module.exports = {
     projectsIdController,
     allProjectsController,
     createProjectController,
     deleteProjectController,
+    createPersonController,
     createUserController
 }
