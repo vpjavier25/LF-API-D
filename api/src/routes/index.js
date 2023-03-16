@@ -5,7 +5,8 @@ const {
     projectsIdController,
     allProjectsController,
     createProjectController,
-    deleteProjectController
+    deleteProjectController,
+    createUserController
 } = require("../handlers/Handlers")
 
 router.get('/projects', allProjectsController)
@@ -15,5 +16,7 @@ router.get('/projects/:id', projectsIdController)
 router.put('/projects', deleteProjectController)
 
 router.post('/projects', createProjectController)
+
+router.post('/people', createUserController)
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const { where } = require("sequelize");
-const { Projects } = require("../db");
+const { Projects, User, Type, Person } = require("../db");
 
 const getAllProjects = async () => {
   const projects = await Projects.findAll();
@@ -59,8 +59,40 @@ const createProject = async (
   };
 };
 
+const createPerson = async (
+  name,
+  lastname,
+  bankinfo,
+  description,
+  address,
+  phonenumber,
+  city
+) => {
+  const newPerson = await Person.create({
+    name,
+    lastname,
+    bankinfo,
+    description,
+    address,
+    phonenumber,
+    city,
+  });
+
+  return {
+    id: newPerson.id,
+    name: name,
+    lastname: lastname,
+    bankinfo: bankinfo,
+    description: description,
+    address: address,
+    phonenumber: phonenumber,
+    city: city,
+  };
+};
+
 module.exports = {
   createProject,
   getAllProjects,
+  createPerson,
   getProjectById,
 };
