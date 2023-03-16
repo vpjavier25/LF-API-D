@@ -6,12 +6,11 @@ module.exports = {
     let projects = [
       {
         id: "d40e525e-c2dd-11ed-afa1-0242ac120002",
-        id_user: "correo@gmail.com",
         name: "Miguel",
         title: "Ayuda para el pueblo",
         description: "Descripcion 2",
-        image: "",
-        complete: false,
+        image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
+        completed: false,
         deleted: false,
         location: "Colombia",
       }
