@@ -16,8 +16,9 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
+  const {completed, location} = req.query
   try {
-    const allProjects = await getAllProjects();
+    const allProjects = await getAllProjects(completed, location);
     res.status(200).json(allProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -25,9 +26,9 @@ const allProjectsController = async (req, res) => {
 };
 
 const createProjectController = async (req, res) =>{
-  const {id_user ,name, title, description, image, complete, deleted, location, cost, currentAmount} = req.body
+  const {id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount} = req.body
   try {
-     const postProject = await createProject(id_user ,name, title, description, image, complete, deleted, location, cost, currentAmount)
+     const postProject = await createProject(id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount)
      res.status(200).json(postProject)
   } catch (error) {
       res.status(200).json({error: error.message})
