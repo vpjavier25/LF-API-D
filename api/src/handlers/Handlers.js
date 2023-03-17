@@ -16,6 +16,10 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
+  /* Diseño de url para utlizar la paginacion:
+  ejemplo:  http://localhost:3001/projects?page=3&limit=5 
+  Se deben declarar page y limit para correcto funcionamiento*/
+
   const page = req.query.page;
   const limit = req.query.limit;
 
