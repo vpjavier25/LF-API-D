@@ -1,8 +1,12 @@
 const { where } = require("sequelize");
 const { Projects, User, Type, Person } = require("../db");
 
-const getAllProjects = async () => {
+const getAllProjects = async (name) => {
   const projects = await Projects.findAll();
+  if(name) {
+    const searchByName = projects.filter(n => n.title.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(name) || n.title.toUpperCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(name))
+    return searchByName;
+  }
   return projects;
 };
 

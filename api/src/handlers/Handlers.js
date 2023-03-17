@@ -16,8 +16,9 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
+  const { name } = req.query;
   try {
-    const allProjects = await getAllProjects();
+    const allProjects = await getAllProjects(name);
     res.status(200).json(allProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -54,7 +55,7 @@ const createProjectController = async (req, res) => {
       cost,
       currentAmount
     );
-    res.status(200).json(postProject);
+    res.status(201).json(postProject);
   } catch (error) {
     res.status(200).json({ error: error.message });
   }
@@ -73,7 +74,7 @@ const createUserController = async (req, res) => {
       phonenumber,
       city
     );
-    res.status(200).json(postPerson);
+    res.status(201).json(postPerson);
   } catch (error) {
     res.status(200).json({ error: error.message });
   }
