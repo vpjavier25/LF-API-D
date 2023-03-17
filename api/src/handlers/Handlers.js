@@ -16,49 +16,27 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
-  const { name } = req.query;
+  const {completed, location, name} = req.query
   try {
-    const allProjects = await getAllProjects(name);
+    const allProjects = await getAllProjects(completed, location, name);
     res.status(200).json(allProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
+const createProjectController = async (req, res) =>{
+  const {id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount} = req.body
+  try {
+     const postProject = await createProject(id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount)
+     res.status(200).json(postProject)
+  } catch (error) {
+      res.status(200).json({error: error.message})
+  }
+}
+
 const deleteProjectController = async (req, res) => {
   res.status(200).json("se borro un proyecto");
-};
-
-const createProjectController = async (req, res) => {
-  const {
-    id_user,
-    name,
-    title,
-    description,
-    image,
-    complete,
-    deleted,
-    location,
-    cost,
-    currentAmount,
-  } = req.body;
-  try {
-    const postProject = await createProject(
-      id_user,
-      name,
-      title,
-      description,
-      image,
-      complete,
-      deleted,
-      location,
-      cost,
-      currentAmount
-    );
-    res.status(201).json(postProject);
-  } catch (error) {
-    res.status(200).json({ error: error.message });
-  }
 };
 
 const createUserController = async (req, res) => {
