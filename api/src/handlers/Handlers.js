@@ -16,9 +16,30 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
+  const page = req.query.page;
+  const limit = req.query.limit;
+
+  const startIndex = (page-1)*limit;
+  const endIndex = page*limit;
+
+  const results = {};
   try {
     const allProjects = await getAllProjects();
-    res.status(200).json(allProjects);
+    
+    if(endIndex<allProjects.length){
+      results.next ={
+        page: page + 1,
+        limit: limit
+      }
+    }
+    if(startIndex>0){
+      results.previous={
+        page:page - 1,
+        limit:limit
+      }
+    }
+    results.results = allProjects.slice(startIndex, endIndex);
+    res.status(200).json(results);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
