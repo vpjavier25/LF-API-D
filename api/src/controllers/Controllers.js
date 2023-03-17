@@ -1,9 +1,34 @@
-const { where } = require("sequelize");
+const { where, Op } = require("sequelize");
 const { Projects, User, Type, Person } = require("../db");
 
-const getAllProjects = async () => {
-  const projects = await Projects.findAll();
-  return projects;
+const getAllProjects = async (completed, location) => {
+  if(completed === "false"){
+    console.log("pasa por el if")
+    const filter1 = await Projects.findAll({where: {completed: completed}})
+    if(location !== undefined){
+      let filter2 = filter1.filter(el => el.location.toLowerCase() === location.toLowerCase())
+      return filter2
+    }
+    return filter1
+  } 
+  if(completed === "true"){
+    console.log("pasa por el if")
+    const filter3 = await Projects.findAll({where: {completed: completed}})
+    if(location !== undefined){
+      let filter4 = filter3.filter(el => el.location.toLowerCase() === location.toLowerCase())
+      return filter4
+    }
+    return filter3
+  } 
+  if(completed === undefined && location){
+    const filter5 = await Projects.findAll({
+      where: { location: { [Op.iLike]: `${location}` } }
+    });
+    return filter5;
+  }else{
+    const projects = await Projects.findAll();
+    return projects;
+  }
 };
 
 const getProjectById = async (id) => {
@@ -20,28 +45,28 @@ const getProjectById = async (id) => {
 };
 
 const createProject = async (
-  id_user,
-  name,
-  title,
-  description,
-  image,
-  complete,
-  deleted,
-  location,
-  cost,
+  id_user ,
+  name, 
+  title, 
+  description, 
+  image, 
+  completed, 
+  deleted, 
+  location, 
+  cost, 
   currentAmount
 ) => {
   const newProject = await Projects.create({
-    id_user,
-    name,
-    title,
-    description,
-    image,
-    complete,
-    deleted,
-    location,
-    cost,
-    currentAmount,
+  id_user ,
+  name, 
+  title, 
+  description, 
+  image, 
+  completed, 
+  deleted, 
+  location, 
+  cost, 
+  currentAmount
   });
   return newProject
 }
