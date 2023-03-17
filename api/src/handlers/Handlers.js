@@ -15,35 +15,42 @@ const projectsIdController = async (req, res) => {
   }
 };
 
+function paginateditems(page, limit, items){
+  const startIndex = (page-1)*limit;
+  const endIndex = page*limit;
+  const results = {};
+  if(endIndex<items.length){
+    results.next ={
+      page: page + 1,
+      limit: limit
+    }
+  }
+  if(startIndex>0){
+    results.previous={
+      page:page - 1,
+      limit:limit
+    }
+  }
+  if(!startIndex && !endIndex){
+    return results.results = items;
+  }else{
+    results.results = items.slice(startIndex,endIndex);
+    return results;
+  }
+}
+
+
 const allProjectsController = async (req, res) => {
   /* Diseño de url para utlizar la paginacion:
   ejemplo:  http://localhost:3001/projects?page=3&limit=5 
   Se deben declarar page y limit para correcto funcionamiento*/
-
-  const page = req.query.page;
+  const page =  parseInt(req.query.page)   ;
   const limit = req.query.limit;
-
-  const startIndex = (page-1)*limit;
-  const endIndex = page*limit;
-
-  const results = {};
   try {
     const allProjects = await getAllProjects();
+    const paginatedProjects = paginateditems(page,limit,allProjects);
+    res.status(200).json(paginatedProjects);  
     
-    if(endIndex<allProjects.length){
-      results.next ={
-        page: page + 1,
-        limit: limit
-      }
-    }
-    if(startIndex>0){
-      results.previous={
-        page:page - 1,
-        limit:limit
-      }
-    }
-    results.results = allProjects.slice(startIndex, endIndex);
-    res.status(200).json(results);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
