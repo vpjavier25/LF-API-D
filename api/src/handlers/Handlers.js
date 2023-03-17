@@ -16,9 +16,9 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
-  const {completed, location} = req.query
+  const {completed, location, name} = req.query
   try {
-    const allProjects = await getAllProjects(completed, location);
+    const allProjects = await getAllProjects(completed, location, name);
     res.status(200).json(allProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -39,25 +39,48 @@ const deleteProjectController = async (req, res) => {
   res.status(200).json("se borro un proyecto");
 };
 
-const createPersonController = async (req, res) =>{
-    const {name, lastname, bankinfo, description, address, phonenumber, city} = req.body
-    try {
-       const postPerson = await createPerson(name, lastname, bankinfo, description, address, phonenumber, city)
-       res.status(200).json(postPerson)
-    } catch (error) {
-        res.status(200).json({error: error.message})
-    }
-}
-
-const createUserController = async (req, res) =>{
-    res.status(200).json("se creo un usuario")
-}
+const createUserController = async (req, res) => {
+  const { name, lastname, bankinfo, description, address, phonenumber, city } =
+    req.body;
+  try {
+    const postPerson = await createPerson(
+      name,
+      lastname,
+      bankinfo,
+      description,
+      address,
+      phonenumber,
+      city
+    );
+    res.status(201).json(postPerson);
+  } catch (error) {
+    res.status(200).json({ error: error.message });
+  }
+};
+const createPersonController = async (req, res) => {
+  const { name, lastname, bankinfo, description, address, phonenumber, city } =
+    req.body;
+  try {
+    const postPerson = await createPerson(
+      name,
+      lastname,
+      bankinfo,
+      description,
+      address,
+      phonenumber,
+      city
+    );
+    res.status(200).json(postPerson);
+  } catch (error) {
+    res.status(200).json({ error: error.message });
+  }
+};
 
 module.exports = {
-    projectsIdController,
-    allProjectsController,
-    createProjectController,
-    deleteProjectController,
-    createPersonController,
-    createUserController
-}
+  projectsIdController,
+  allProjectsController,
+  createProjectController,
+  deleteProjectController,
+  createPersonController,
+  createUserController,
+};
