@@ -43,52 +43,23 @@ const createProject = async (
     cost,
     currentAmount,
   });
+  return newProject
+}
 
-  return {
-    id: newProject.id,
-    userId: id_user,
-    name: name,
-    title: title,
-    description: description,
-    image: image,
-    complete: complete,
-    deleted: deleted,
-    location: location,
-    cost: cost,
-    currentAmount: currentAmount,
-  };
-};
+const createPerson = async (name, lastname, bankinfo, description, address, phonenumber, city) => {
+  const newPerson = await Person.create({name, lastname, bankinfo, description, address, phonenumber, city})
 
-const createPerson = async (
-  name,
-  lastname,
-  bankinfo,
-  description,
-  address,
-  phonenumber,
-  city
-) => {
-  const newPerson = await Person.create({
-    name,
-    lastname,
-    bankinfo,
-    description,
-    address,
-    phonenumber,
-    city,
-  });
-
-  return {
-    id: newPerson.id,
-    name: name,
-    lastname: lastname,
-    bankinfo: bankinfo,
-    description: description,
-    address: address,
-    phonenumber: phonenumber,
-    city: city,
-  };
-};
+      return {
+          id: newPerson.id,
+          name: name,
+          lastname: lastname,
+          bankinfo: bankinfo,
+          description: description,
+          address: address,
+          phonenumber: phonenumber,
+          city: city,
+      }
+    }
 
 module.exports = {
   createProject,
