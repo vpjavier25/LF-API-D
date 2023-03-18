@@ -5,6 +5,30 @@ const {
   createPerson,
 } = require("../controllers/Controllers");
 
+function paginateditems(page, limit, items){
+  const startIndex = (page-1)*limit;
+  const endIndex = page*limit;
+  const results = {};
+  if(endIndex<items.length){
+    results.next ={
+      page: page + 1,
+      limit: limit
+    }
+  }
+  if(startIndex>0){
+    results.previous={
+      page:page - 1,
+      limit:limit
+    }
+  }
+  if(!startIndex && !endIndex){
+    return results.results = items;
+  }else{
+    results.results = items.slice(startIndex,endIndex);
+    return results;
+  }
+}
+
 const projectsIdController = async (req, res) => {
   const { id } = req.params;
   try {
@@ -16,10 +40,12 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
-  const {completed, location, name} = req.query
+const {completed, location, name, limit} = req.query
+  const page =  parseInt(req.query.page)
   try {
     const allProjects = await getAllProjects(completed, location, name);
-    res.status(200).json(allProjects);
+    const paginatedProjects = paginateditems(page,limit,allProjects);
+    res.status(200).json(paginatedProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
