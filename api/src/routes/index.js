@@ -6,6 +6,7 @@ const {
     allProjectsController,
     createProjectController,
     deleteProjectController,
+    createPersonController,
     createUserController
 } = require("../handlers/Handlers")
 
@@ -17,6 +18,8 @@ router.put('/projects', deleteProjectController)
 
 router.post('/projects', createProjectController)
 
-router.post('/people', createUserController)
+router.post('/people', createPersonController)
+
+router.post('/users', createUserController)
 
 module.exports = router;
