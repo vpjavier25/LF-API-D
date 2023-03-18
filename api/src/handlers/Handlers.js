@@ -40,66 +40,50 @@ const projectsIdController = async (req, res) => {
 };
 
 const allProjectsController = async (req, res) => {
-  /* Diseño de url para utlizar la paginacion:
-  ejemplo:  http://localhost:3001/projects?page=3&limit=5 
-  Se deben declarar page y limit para correcto funcionamiento*/
-  const page =  parseInt(req.query.page)   ;
-  const limit = req.query.limit;
+const {completed, location, name, limit} = req.query
+  const page =  parseInt(req.query.page)
   try {
-    const allProjects = await getAllProjects();
+    const allProjects = await getAllProjects(completed, location, name);
     const paginatedProjects = paginateditems(page,limit,allProjects);
-
-    
-    if(paginatedProjects.results.length === 0){
-      res.status(400).json({ error: "No hay datos por mostrar." }); 
-    }else{
-      res.status(200).json(paginatedProjects);  
-    }
-    
-    
-    
+    res.status(200).json(paginatedProjects);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
+const createProjectController = async (req, res) =>{
+  const {id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount} = req.body
+  try {
+     const postProject = await createProject(id_user ,name, title, description, image, completed, deleted, location, cost, currentAmount)
+     res.status(200).json(postProject)
+  } catch (error) {
+      res.status(200).json({error: error.message})
+  }
+}
+
 const deleteProjectController = async (req, res) => {
   res.status(200).json("se borro un proyecto");
 };
 
-const createProjectController = async (req, res) => {
-  const {
-    id_user,
-    name,
-    title,
-    description,
-    image,
-    complete,
-    deleted,
-    location,
-    cost,
-    currentAmount,
-  } = req.body;
+const createUserController = async (req, res) => {
+  const { name, lastname, bankinfo, description, address, phonenumber, city } =
+    req.body;
   try {
-    const postProject = await createProject(
-      id_user,
+    const postPerson = await createPerson(
       name,
-      title,
+      lastname,
+      bankinfo,
       description,
-      image,
-      complete,
-      deleted,
-      location,
-      cost,
-      currentAmount
+      address,
+      phonenumber,
+      city
     );
-    res.status(200).json(postProject);
+    res.status(201).json(postPerson);
   } catch (error) {
     res.status(200).json({ error: error.message });
   }
 };
-
-const createUserController = async (req, res) => {
+const createPersonController = async (req, res) => {
   const { name, lastname, bankinfo, description, address, phonenumber, city } =
     req.body;
   try {
@@ -123,5 +107,6 @@ module.exports = {
   allProjectsController,
   createProjectController,
   deleteProjectController,
+  createPersonController,
   createUserController,
 };

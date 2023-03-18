@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
     },
     completed:{
       type:DataTypes.BOOLEAN,
-      allowNull:true
+      allowNull:false
     },
     deleted:{
       type:DataTypes.BOOLEAN,
