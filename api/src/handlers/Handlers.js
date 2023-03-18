@@ -5,16 +5,6 @@ const {
   createPerson,
 } = require("../controllers/Controllers");
 
-const projectsIdController = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const projectById = await getProjectById(id);
-    res.status(200).json(projectById);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
 function paginateditems(page, limit, items){
   const startIndex = (page-1)*limit;
   const endIndex = page*limit;
@@ -39,6 +29,15 @@ function paginateditems(page, limit, items){
   }
 }
 
+const projectsIdController = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const projectById = await getProjectById(id);
+    res.status(200).json(projectById);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const allProjectsController = async (req, res) => {
   /* Diseño de url para utlizar la paginacion:
@@ -49,7 +48,15 @@ const allProjectsController = async (req, res) => {
   try {
     const allProjects = await getAllProjects();
     const paginatedProjects = paginateditems(page,limit,allProjects);
-    res.status(200).json(paginatedProjects);  
+
+    
+    if(paginatedProjects.results.length === 0){
+      res.status(400).json({ error: "No hay datos por mostrar." }); 
+    }else{
+      res.status(200).json(paginatedProjects);  
+    }
+    
+    
     
   } catch (error) {
     res.status(400).json({ error: error.message });
