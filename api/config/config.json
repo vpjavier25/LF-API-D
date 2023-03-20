@@ -1,14 +1,14 @@
 {
     "development": {
     "username": "postgres",
-    "password": "Mitiochacalon1",
+    "password": "megusta",
     "database": "linkingfuture",
     "host": "localhost",
     "dialect": "postgres"
 },
     "test": {
     "username": "postgres",
-    "password": "Mitiochacalon1",
+    "password": "megusta",
     "database": "linkingfuture",
     "host": "localhost",
     "dialect": "postgres"

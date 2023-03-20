@@ -78,6 +78,9 @@ const createProject = async (
     cost,
     currentAmount,
   });
+
+  
+
   return newProject;
 };
 
