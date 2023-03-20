@@ -8,9 +8,9 @@ module.exports = {
         id: "d40e525e-c2dd-11ed-afa1-0242ac120002",
         name: "Comunidad de Cartagena",
         title: "Ayuda para el pueblo",
-        description: "Descripcion 2",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget urna maximus.",
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
-        completed: false,
+        completed: true,
         deleted: false,
         location: "Colombia",
       },{
@@ -21,14 +21,14 @@ module.exports = {
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Chile",
       },{
         id: "2dfad716-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Medellín",
         title: "Sembrando Conciencia",
         description: "Descripcion 2",
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
-        completed: false,
+        completed: true,
         deleted: false,
         location: "Colombia",
       },{
@@ -37,7 +37,7 @@ module.exports = {
         title: "Una Mano Amiga para Neiva",
         description: "Descripcion 2",
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
-        completed: false,
+        completed: true,
         deleted: false,
         location: "Colombia",
       },{
@@ -45,10 +45,10 @@ module.exports = {
         name: "Comunidad de Popayán",
         title: "Creando Sonrisas",
         description: "Descripcion 2",
-        image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
+        image: "https://www.noticiasensalud.com/wp-content/uploads/2021/07/Servicios-centros-e-informaciones-de-interes-para-garantizar-nuestra-salud-1000x600.png",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Brazil",
       },{
         id: "2dfaddf6-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Popayán",
@@ -66,7 +66,7 @@ module.exports = {
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Argentina",
       },{
         id: "2dfae134-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Santa Marta",
@@ -84,7 +84,7 @@ module.exports = {
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Chile",
       },{
         id: "2dfae45e-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Cartagen",
@@ -138,7 +138,7 @@ module.exports = {
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Peru",
       },{
         id: "2dfaed78-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Cartagen",
@@ -147,7 +147,7 @@ module.exports = {
         image: "https://pbs.twimg.com/profile_images/780533176691257345/_hjWP8SR_400x400.jpg",
         completed: false,
         deleted: false,
-        location: "Colombia",
+        location: "Peru",
       },{
         id: "2dfaefd0-c413-11ed-afa1-0242ac120002",
         name: "Comunidad de Santa Marta",

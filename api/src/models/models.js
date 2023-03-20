@@ -27,11 +27,11 @@ module.exports = (sequelize) => {
     },
     completed:{
       type:DataTypes.BOOLEAN,
-      allowNull:false
+      allowNull:true
     },
     deleted:{
       type:DataTypes.BOOLEAN,
-      allowNull:false
+      allowNull:true
     },
     location:{
       type:DataTypes.STRING,
