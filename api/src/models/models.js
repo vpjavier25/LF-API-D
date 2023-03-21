@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       },
       city: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       cost: {
         type: DataTypes.STRING,
