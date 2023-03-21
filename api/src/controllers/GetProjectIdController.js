@@ -1,3 +1,4 @@
+const { getProjectById } = require("../handlers/GetProjectById")
 
 const projectsIdController = async (req, res) => {
     const { id } = req.params;

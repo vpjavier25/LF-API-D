@@ -1,8 +1,10 @@
+const { createUser } = require("../handlers/CreateUserHandler");
+
 const createUserController = async (req, res) => {
     const { name, lastname, bankinfo, description, address, phonenumber, city } =
       req.body;
     try {
-      const postPerson = await createPerson(
+      const postUser = await createUser(
         name,
         lastname,
         bankinfo,
@@ -11,7 +13,7 @@ const createUserController = async (req, res) => {
         phonenumber,
         city
       );
-      res.status(201).json(postPerson);
+      res.status(201).json(postUser);
     } catch (error) {
       res.status(200).json({ error: error.message });
     }
