@@ -1,4 +1,4 @@
-const { Projects } = require("../db");
+const { Project } = require("../db");
 
 const createProject = async (
     id_user,
@@ -12,7 +12,7 @@ const createProject = async (
     cost,
     currentAmount
   ) => {
-    const newProject = await Projects.create({
+    const newProject = await Project.create({
       id_user,
       name,
       title,
