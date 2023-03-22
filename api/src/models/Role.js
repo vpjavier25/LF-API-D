@@ -6,9 +6,9 @@ module.exports = (sequelize) => {
     sequelize.define("role",
         {
             id: {
-                type: DataTypes.UUID,
+                type: DataTypes.INTEGER,
                 primaryKey: true,
-                defaultValue: DataTypes.UUIDV4,
+                autoIncrement: true
             },
             name: {
                 type: DataTypes.ENUM('Admin', 'Donor', 'Community'),
