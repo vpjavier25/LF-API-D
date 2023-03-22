@@ -5,9 +5,11 @@ module.exports = {
   async up (queryInterface, Sequelize) {
 
     const users = [{
-      id: "d1ad85de-c2d1-11ed-bfb1-0242ac132862",
-      email: "example@gmail.com",
-      password: "123456",
+      
+      email: "example1234@gmail.com",
+      name: "Andres",
+      lastname: "Torres",
+      contraseña: "123456",
     },
    ]
 
