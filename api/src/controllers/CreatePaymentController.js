@@ -1,7 +1,8 @@
 const request = require('request');
 
-const CLIENT = 'ARfh5Nm3Xa8JH_rryo89KkoJJQVmpMlvUx1H8WFoMSStYr9iAk8sqLmGJ0h9Gxg_4yMWQyBUolORSqax';
-const SECRET = 'EB4JjP75YgnIPDqtenN0PYL65Ck3pHSbM7i7-oeQRq7NfxgQLXS88EmF2cjxWU-348r8vgrTuGj2EaK2';
+const { CLIENT,SECRET } = process.env;
+
+
 const PAYPAL_API = 'https://api-m.sandbox.paypal.com'; // Live https://api-m.paypal.com
 
 const auth = { user: CLIENT, pass: SECRET }
