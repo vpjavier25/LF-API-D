@@ -15,10 +15,6 @@ module.exports = (sequelize) => {
     location: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    postProject: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+    }
   });
 };
