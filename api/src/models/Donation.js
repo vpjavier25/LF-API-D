@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
             },
             monto: {
               type: DataTypes.STRING,
-              allowNull: false,
+              allowNull: true,
             },
           },
           { timestamps: false }
