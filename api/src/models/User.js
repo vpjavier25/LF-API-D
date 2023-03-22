@@ -5,14 +5,13 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define("user", {
         id: {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            autoIncrement: true
         },
         email: {
             type: DataTypes.STRING,
             unique: true
-
         },
         name:{
             type: DataTypes.STRING,
@@ -22,9 +21,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        password:{
+        contraseña:{
             type: DataTypes.STRING,
             allowNull: false
         }
-    })
+    }, {timestamps: false})
 }

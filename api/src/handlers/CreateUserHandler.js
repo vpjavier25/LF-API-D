@@ -1,34 +1,24 @@
 const { User } = require("../db");
 
 const createUser = async (
+  email,
   name,
   lastname,
-  bankinfo,
+  contraseña,
   description,
-  address,
-  phonenumber,
-  city
+  roleid
 ) => {
   const newUser = await User.create({
+    email,
     name,
     lastname,
-    bankinfo,
-    description,
-    address,
-    phonenumber,
-    city,
+    contraseña,
+    description
   });
 
-  return {
-    id: id,
-    name: name,
-    lastname: lastname,
-    bankinfo: bankinfo,
-    description: description,
-    address: address,
-    phonenumber: phonenumber,
-    city: city,
-  };
+  newUser.setRole(roleid);
+
+  return newUser
 };
 
 module.exports = {createUser};

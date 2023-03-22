@@ -10,7 +10,7 @@ const getProjectById = async (id) => {
       });
       return projectById;
     } catch (error) {
-      throw error;
+      return {erro: error.message}
     }
   };
 

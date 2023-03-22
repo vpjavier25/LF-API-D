@@ -3,19 +3,16 @@ const { DataTypes } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define("donation",
+    sequelize.define("role",
         {
-            admin: {
-                type: DataTypes.STRING,
-                allowNull: true,
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
             },
-            user: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
-            community: {
-                type: DataTypes.STRING,
-                allowNull: true,
+            name: {
+                type: DataTypes.ENUM('Admin', 'Donor', 'Community'),
+                allowNull: false,
             },
         },
         { timestamps: false }
