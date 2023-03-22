@@ -9,7 +9,7 @@ const {createUserController} = require("../controllers/CreateUserController");
 const { CreateRoleController } = require('../controllers/CreateRoleController');
 const { createAdminController } = require('../controllers/CreateAdminController');
 const { createDonationController } = require('../controllers/createDonationController');
-    
+const { createPayment, executePayment, cancelPayment} = require('../controllers/CreatePaymentController');
 
 router.get('/projects', allProjectsController)
 
@@ -26,4 +26,11 @@ router.post('/roles', CreateRoleController)
 router.post('/admins', createAdminController)
 
 router.post('/donations', createDonationController)
+
+router.post('/create-payment', createPayment)
+
+router.get('/execute-payment', executePayment)
+
+router.get('/cancel-payment', cancelPayment)
+
 module.exports = router;
