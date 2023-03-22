@@ -1,9 +1,9 @@
 const { where } = require("sequelize");
-const { Projects} = require("../db");
+const { Project} = require("../db");
 
 const getProjectById = async (id) => {
     try {
-      const projectById = await Projects.findOne({
+      const projectById = await Project.findOne({
         where: {
           id: id,
         },
