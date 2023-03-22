@@ -1,5 +1,5 @@
 const { where } = require("sequelize");
-const { Projects} = require("../db");
+const { Project} = require("../db");
 
 const getProjectById = async (id) => {
     try {
@@ -10,7 +10,7 @@ const getProjectById = async (id) => {
       });
       return projectById;
     } catch (error) {
-      throw error;
+      return {erro: error.message}
     }
   };
 
