@@ -14,6 +14,8 @@ const server = express();
 
 require('./authWithJWT/passport')(passport);
 
+require('./authWithGoogle/passport')(passport);
+
 server.use(passport.initialize());
 
 server.use(cors())

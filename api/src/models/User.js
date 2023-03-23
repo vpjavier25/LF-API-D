@@ -5,9 +5,9 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define("user", {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             primaryKey: true,
-            autoIncrement: true
+            defaultValue: DataTypes.UUIDV1
         },
         email: {
             type: DataTypes.STRING,
@@ -15,19 +15,19 @@ module.exports = (sequelize) => {
         },
         name:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         lastname:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         hash:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         salt:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     }, {timestamps: false})
 }
