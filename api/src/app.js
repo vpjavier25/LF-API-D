@@ -4,10 +4,20 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const cors = require('cors');
+const passport = require("passport");
 
 require('./db.js');
 
+
+
 const server = express();
+
+require('./authWithJWT/passport')(passport);
+
+require('./authWithGoogle/passport')(passport);
+
+server.use(passport.initialize());
+
 server.use(cors())
 
 server.name = 'API';

@@ -1,24 +1,30 @@
 const { User } = require("../db");
+const { genPassword } = require("../authWithJWT/utils")
 
 const createUser = async (
   email,
   name,
   lastname,
-  contraseña,
-  description,
-  roleid
+  password,
+  roleid,
 ) => {
+
+  const saltHash = genPassword(password);
+
+  const salt = saltHash.salt;
+  const hash = saltHash.hash;
+
   const newUser = await User.create({
     email,
     name,
     lastname,
-    contraseña,
-    description
+    hash,
+    salt
   });
 
-  newUser.setRole(roleid);
+  //newUser.setRole(roleid);
 
   return newUser
 };
 
-module.exports = {createUser};
+module.exports = { createUser };
