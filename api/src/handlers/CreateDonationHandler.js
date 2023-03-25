@@ -23,7 +23,7 @@ const createDonation = async (
         
         return projectdonado.addUser(usuariodonador, {through: { monto: monto}});
     } catch (error) {
-        return {erro: error.message}
+        return {error: error.message}
     }
 }
 
