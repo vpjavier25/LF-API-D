@@ -21,7 +21,7 @@ router.get('/projects/:id', projectsIdController)
 
 router.put('/projects', deleteProjectController)
 
-router.post('/projects', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login' , session:false}), createProjectController)
+router.post('/projects', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login', session: false }), createProjectController)
 
 router.post('/user', createUserController)
 
@@ -29,7 +29,7 @@ router.post('/roles', CreateRoleController)
 
 router.post('/admins', createAdminController)
 
-router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login' , session:false}), createDonationController)
+router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login', session: false }), createDonationController)
 
 router.post('/create-payment', createPayment)
 
@@ -37,25 +37,28 @@ router.get('/execute-payment', executePayment)
 
 router.get('/cancel-payment', cancelPayment)
 //------------------------------------------------------------------------
-router.post('/login', logInController)//falta configurar bien el handler y el controlador 
+router.post('/login', logInController);
 
-router.get('/login', (req, res) =>{
-    res.cookie("value","aasdasd", { httpOnly: false, maxAge: 5000,  });
-    
-    res.redirect("http://localhost:3000/home");
+router.get('/login', (req, res) => {
+  res.cookie("value", req.app.locals.token, { httpOnly: false, maxAge: 1000 * 60 * 10, });
+  res.cookie("success", "true", { httpOnly: false, maxAge: 1000 * 60 * 10, });
+  res.redirect("http://localhost:3000/home");
+
 })//con esta ruta logro que las cookies lleguen al puerto 3000 luego de la verificacion con la ruta post
 
 //--------------------------------------------------------------------------
 
-
+//--------------------------------------------------------------------------------------------------------------
+//google auth
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile'], session: false }));
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
 
-router.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/home' , session:false}),
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/home', session: false }),
   GoogleCallBackController
 );
 
+//--------------------------------------------------------------------------------------------------------------
 
 
 module.exports = router;

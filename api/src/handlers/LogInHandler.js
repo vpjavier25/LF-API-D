@@ -3,10 +3,12 @@ const { User } = require("../db");
 
 async function LogIn(name, password) {
 
+    
     const user = await User.findOne({ where: { name: name } });
 
+
     if (!user) {
-        return "user not found";
+        return {success: false, msg: "user not found"};
     }
 
     const isValid = validPassword(password, user.hash, user.salt);
@@ -15,11 +17,11 @@ async function LogIn(name, password) {
 
         const tokenObject = issueJWT(user);
 
-        return tokenObject.token
+        return {token:tokenObject.token, success:true, msg:"you are in"}
 
     } else {
 
-        return "you entered the wrong password";
+        return { success: false, msg:"you entered the wrong password"};
 
     }
 }
