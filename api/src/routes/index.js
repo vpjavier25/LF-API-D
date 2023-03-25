@@ -21,7 +21,7 @@ router.get('/projects/:id', projectsIdController)
 
 router.put('/projects', deleteProjectController)
 
-router.post('/projects', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login', session: false }), createProjectController)
+router.post('/projects', passport.authenticate('jwt', { session: false }), createProjectController)
 
 router.post('/user', createUserController)
 
@@ -47,6 +47,16 @@ router.get('/login', (req, res) => {
 })//con esta ruta logro que las cookies lleguen al puerto 3000 luego de la verificacion con la ruta post
 
 //--------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+
+router.get("/logout", (req, res) =>{
+  res.clearCookie("value");
+  res.clearCookie("success");
+  res.redirect("http://localhost:3000/login");
+})//ruta para limpiar las cookies
+//------------------------------------------------------------------------------
+
 
 //--------------------------------------------------------------------------------------------------------------
 //google auth
