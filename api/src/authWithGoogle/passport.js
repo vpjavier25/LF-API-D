@@ -12,22 +12,30 @@ module.exports = (passport) => {
         clientSecret: KEY_SECRET_GOOGLE,
         callbackURL: "http://localhost:3001/auth/google/callback"
     },
-        async function (accessToken, refreshToken, profile, done) {
+        async function (accessToken, refreshToken, profile, cb) {
+
+            cb(null, profile);
             console.log(profile);
-            done(null, profile);
-            //     try {
-            //         //const user = await User.findOne({ where: { name: profile.name } })
 
-            //         if (!user) {
-            //             done(null, profile)
-            //         } else {
+            try {
+                let user = await User.findOne({ where: { googleId: profile.id } })
 
-            //         }
-            //     } catch (err) {
-            //         done(err, null)
-            //     }
+                if (!user) {
 
+                    user = {
+                        id: profile.id,
+                        name: profile.name.givenName,
+                        lastName: profile.name.familyName,
+                    }
+                    const newUser = await User.create(user)
 
+                    cb(null, profile);
+                } else {
+                    cb(null, false);
+                }
+            } catch (err) {
+                cb(err, null)
+            }
         }
     ));
 }
