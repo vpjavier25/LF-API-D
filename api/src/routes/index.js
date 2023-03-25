@@ -36,14 +36,16 @@ router.post('/create-payment', createPayment)
 router.get('/execute-payment', executePayment)
 
 router.get('/cancel-payment', cancelPayment)
+//------------------------------------------------------------------------
+router.post('/login', logInController)//falta configurar bien el handler y el controlador 
 
-router.get('/login', logInController)
+router.get('/login', (req, res) =>{
+    res.cookie("value","aasdasd", { httpOnly: false, maxAge: 5000,  });
+    
+    res.redirect("http://localhost:3000/home");
+})//con esta ruta logro que las cookies lleguen al puerto 3000 luego de la verificacion con la ruta post
 
-// router.use((req, res) =>{
-//   res.cookie("value", res.tokenName, { httpOnly: false, maxAge: 500000000 });
-//   res.cookie("success", "true", { httpOnly: false, maxAge: 500000000 });
-//   res.redirect('/');
-// })
+//--------------------------------------------------------------------------
 
 
 router.get('/auth/google',
