@@ -6,17 +6,17 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:/linkingfuture`, {
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:/linkingfuture`, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
+// const basename = path.basename(__filename);
+
+const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 const basename = path.basename(__filename);
-
-/* const sequelize = new Sequelize(DB_DEPLOY, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
-const basename = path.basename(__filename); */
 
 const modelDefiners = [];
 
@@ -36,14 +36,32 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Projects, User, Type, Person } = sequelize.models;
+const { Project, Role, User, Info, BankInfo, Donation, Admin} = sequelize.models;
 
 // Aca vendrian las relaciones
 
-User.hasMany(Projects)
-User.hasOne(Type)
-Person.hasOne(User)
-Projects.hasOne(User)
+User.hasOne(Info)
+Info.belongsTo(User)
+
+BankInfo.hasOne(Info)
+Info.belongsTo(BankInfo)
+
+Role.hasMany(User)
+User.belongsTo(Role)
+
+Role.hasMany(Admin)
+Admin.belongsTo(Role)
+
+User.hasMany(Project)
+Project.belongsTo(User)
+
+Admin.hasMany(Project)
+Project.belongsTo(Admin)
+
+Project.belongsToMany(User, { through: Donation })
+User.belongsToMany(Project, {through: Donation })
+
+
 
 
 module.exports = {
