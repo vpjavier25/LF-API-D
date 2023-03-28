@@ -1,8 +1,6 @@
 const { Project } = require("../db");
 
 const createProject = async (
-  userid,
-  adminid,
   name,
   description,
   image,
@@ -11,18 +9,20 @@ const createProject = async (
   currentAmount,
   status,
   completed,
-  deleted
+  deleted,
+  userid,
+  adminid
   ) => {
     const newProject = await Project.create({
-            name,
-            description,
-            image,
-            location,
-            cost,
-            currentAmount,
-            status,
-            completed,
-            deleted
+      name,
+      description,
+      image,
+      location,
+      cost,
+      currentAmount,
+      status,
+      completed,
+      deleted
     });
 
     newProject.setUser(userid)

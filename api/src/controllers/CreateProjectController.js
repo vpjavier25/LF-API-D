@@ -16,8 +16,6 @@ const createProjectController = async (req, res) => {
                   } = req.body
     try {
         const postProject = await createProject(
-            userid,
-            adminid,
             name,
             description,
             image,
@@ -26,7 +24,9 @@ const createProjectController = async (req, res) => {
             currentAmount,
             status,
             completed,
-            deleted)
+            deleted,
+            userid,
+            adminid)
         res.status(200).json(postProject)
     } catch (error) {
         res.status(400).json({ error: error.message })
