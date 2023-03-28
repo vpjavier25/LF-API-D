@@ -6,12 +6,7 @@ const createProject = async (
   image,
   location,
   cost,
-  currentAmount,
-  status,
-  completed,
-  deleted,
   userid,
-  adminid
   ) => {
     const newProject = await Project.create({
       name,
@@ -19,16 +14,10 @@ const createProject = async (
       image,
       location,
       cost,
-      currentAmount,
-      status,
-      completed,
-      deleted
     });
 
     newProject.setUser(userid)
-    newProject.setAdmin(adminid)
-  
-    
+   
   
     return newProject;
   };

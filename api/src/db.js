@@ -49,8 +49,8 @@ BankInfo.belongsTo(Comunidad)
 User.hasMany(Project)
 Project.belongsTo(User,{foreignKey: { allowNull: false }})
 
-Admin.hasMany(Project)
-Project.belongsTo(Admin,{foreignKey: { allowNull: false }})
+// Admin.hasMany(Project)
+// Project.belongsTo(Admin,{foreignKey: { allowNull: false }})
 
 User.hasMany(Donation)
 Donation.belongsTo(User,{foreignKey: { allowNull: false }})

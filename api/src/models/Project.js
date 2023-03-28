@@ -29,19 +29,15 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    cost_currency:{
+    currency:{
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "Dólares"
     },
     currentAmount:{
       type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    currentAmount_currency:{
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "Dólares"
+      defaultValue: 0,
+      allowNull: true,
     },
     status:{
       type: DataTypes.STRING,
@@ -51,12 +47,12 @@ module.exports = (sequelize) => {
     completed:{
       type:DataTypes.BOOLEAN,
       allowNull:false,
-      defaultValue: false
+      defaultValue: false,
     },
     deleted:{
       type:DataTypes.BOOLEAN,
       allowNull:false,
-      defaultValue: false
+      defaultValue: false,
     }
   },{timestamps:false});
 }

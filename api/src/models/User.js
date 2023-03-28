@@ -20,19 +20,24 @@ module.exports = (sequelize) => {
         },
         user_name:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         },
         user_lastname:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         },
         hash:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         },
         salt:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+        },
+        admin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
         }
     }, {timestamps: false})
 }
