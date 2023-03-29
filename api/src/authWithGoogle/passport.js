@@ -14,13 +14,8 @@ module.exports = (passport) => {
     },
         async function (accessToken, refreshToken, profile, cb) {
 
-            cb(null, profile);
-            console.log(profile);
-
             try {
                 let user = await User.findOne({ where: { user_email: profile.emails[0].value } })
-                console.log(user);
-
                 if (!user) {
 
                     user = {
