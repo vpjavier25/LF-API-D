@@ -2,7 +2,7 @@ const { User } = require("../db");
 const { LogIn } = require("../handlers/LogInHandler");
 
 
-const logInController = async (req, res, app) => {
+const logInController = async (req, res) => {
     const { name, password } = req.body;
 
     try {
