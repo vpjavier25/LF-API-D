@@ -26,11 +26,10 @@ module.exports = (passport) => {
                         
                     }
                     const newUser = await User.create(user)
-
-                    cb(null, profile);
-                } else {
-                    cb(null, false);
                 }
+
+                cb(null, profile);
+                
             } catch (err) {
                 cb(err, null)
             }
