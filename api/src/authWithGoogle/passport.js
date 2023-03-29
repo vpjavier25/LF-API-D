@@ -18,12 +18,13 @@ module.exports = (passport) => {
             console.log(profile);
 
             try {
-                let user = await User.findOne({ where: { googleId: profile.id } })
+                let user = await User.findOne({ where: { user_email: profile.emails[0].value } })
+                console.log(user);
 
                 if (!user) {
 
                     user = {
-                        id: profile.id,
+                        googleId: profile.id,
                         user_name: profile.name.givenName,
                         user_lastname: profile.name.familyName,
                         user_email: profile.emails[0].value,
