@@ -69,7 +69,7 @@ router.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
 
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'https://client-pf-seven.vercel.app/home', session: false }),
+  passport.authenticate('google', { failureRedirect: 'https://client-pf-seven.vercel.app/login', session: false }),
   GoogleCallBackController
 );
 
