@@ -8,7 +8,7 @@ const GoogleCallBackController = (req, res, next) => {
     res.cookie("value", token.token, { httpOnly: false, maxAge: 1000 * 60 * 60 })
     res.cookie("success", "true", { httpOnly: false, maxAge: 500000000 }) 
 
-    res.redirect('http://localhost:3000/home');
+    res.redirect('https://client-pf-seven.vercel.app/home');
 }
 
 module.exports = { GoogleCallBackController }
