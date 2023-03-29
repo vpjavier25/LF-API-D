@@ -65,26 +65,26 @@ router.get("/logout", (req, res) =>{
 
 //--------------------------------------------------------------------------------------------------------------
 //google auth
-router.get('/auth/google', async (req, res) => {
-  const url = 'https://accounts.google.com/o/oauth2/v2/auth';
-  const params = {
-    response_type: 'code',
-    redirect_uri: 'https://pf-api-production.up.railway.app/auth/google/callback',
-    scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
-    client_id: '959933967168-h1t0cc60opb0jajdd4chftin4qq3mplq.apps.googleusercontent.com'
-  };
-  const response = await fetch(`${url}?${new URLSearchParams(params)}`);
-  const text = await response.text();
-  console.log(text);
-  res.send(text);
-});
-// router.get('/auth/google',
-//   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
+// router.get('/auth/google', async (req, res) => {
+//   const url = 'https://accounts.google.com/o/oauth2/v2/auth';
+//   const params = {
+//     response_type: 'code',
+//     redirect_uri: 'https://pf-api-production.up.railway.app/auth/google/callback',
+//     scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+//     client_id: '959933967168-h1t0cc60opb0jajdd4chftin4qq3mplq.apps.googleusercontent.com'
+//   };
+//   const response = await fetch(`${url}?${new URLSearchParams(params)}`);
+//   const text = await response.text();
+//   console.log(text);
+//   res.send(text);
+// });
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
 
-// router.get('/auth/google/callback',
-//   passport.authenticate('google', { failureRedirect: 'https://client-pf-seven.vercel.app/login', session: false }),
-//   GoogleCallBackController
-// );
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: 'https://client-pf-seven.vercel.app/login', session: false }),
+  GoogleCallBackController
+);
 
 //--------------------------------------------------------------------------------------------------------------
 
