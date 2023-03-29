@@ -38,7 +38,7 @@ router.post('/bankInfos', createBankInfoController)
 router.get('/donations', allDonationsController)
 router.get('/projects', allProjectsController)
 //----------------------------------------------------
-router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'http://localhost:3000/login', session: false }), createDonationController)
+router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'hhttps://client-pf-seven.vercel.app/login', session: false }), createDonationController)
 router.post('/create-payment', createPayment)
 router.get('/execute-payment', executePayment)
 router.get('/cancel-payment', cancelPayment)
@@ -47,7 +47,7 @@ router.post('/login', logInController);
 router.get('/login', (req, res) => {
   res.cookie("value", req.app.locals.token, { httpOnly: false, maxAge: 1000 * 60 * 10, });
   res.cookie("success", "true", { httpOnly: false, maxAge: 1000 * 60 * 10, });
-  res.redirect("http://localhost:3000/home");
+  res.redirect("hhttps://client-pf-seven.vercel.app/home");
 
 })//con esta ruta logro que las cookies lleguen al puerto 3000 luego de la verificacion con la ruta post
 
@@ -58,7 +58,7 @@ router.get('/login', (req, res) => {
 router.get("/logout", (req, res) =>{
   res.clearCookie("value");
   res.clearCookie("success");
-  res.redirect("http://localhost:3000/login");
+  res.redirect("hhttps://client-pf-seven.vercel.app/login");
 })//ruta para limpiar las cookies
 //------------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ router.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
 
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/home', session: false }),
+  passport.authenticate('google', { failureRedirect: 'hhttps://client-pf-seven.vercel.app/home', session: false }),
   GoogleCallBackController
 );
 
