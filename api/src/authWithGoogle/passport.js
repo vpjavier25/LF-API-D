@@ -24,8 +24,10 @@ module.exports = (passport) => {
 
                     user = {
                         id: profile.id,
-                        name: profile.name.givenName,
-                        lastName: profile.name.familyName,
+                        user_name: profile.name.givenName,
+                        user_lastname: profile.name.familyName,
+                        user_email: profile.emails.value,
+                        
                     }
                     const newUser = await User.create(user)
 
