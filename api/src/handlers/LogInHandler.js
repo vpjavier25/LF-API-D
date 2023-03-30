@@ -3,12 +3,15 @@ const { User } = require("../db");
 
 async function LogIn(name, password) {
 
-    
+    console.log(password);
     const user = await User.findOne({ where: { user_name: name } });
 
     if (!user) {
         return {success: false, msg: "user not found"};
     }
+
+    console.log(user);
+    console.log(user.salt);
 
     const isValid = validPassword(password, user.hash, user.salt);
     if (isValid) {
