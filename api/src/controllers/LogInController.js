@@ -7,14 +7,15 @@ const logInController = async (req, res) => {
 
     try {
         const state = await LogIn(name, password);
-        req.app.locals.token = state.token // con req.app.locals almaceno info para poder usarla en otro middleware
-        console.log(req.app.locals)
-        // res.cookie("value", "elpepe", { httpOnly: false, maxAge: 1000 * 60 * 10,  });
-        // res.cookie("success","true", { httpOnly: false, maxAge: 1000 * 60 * 10,  });
-        res.status(200).json(state);
+        // req.app.locals.token = state.token // con req.app.locals almaceno info para poder usarla en otro middleware
+        res.cookie("value", state.token, { httpOnly: false, maxAge: 1000 * 60 * 10, });
+        res.cookie("success", "true", { httpOnly: false, maxAge: 1000 * 60 * 30, });
+        console.log(res.cookie);
+        res.status(200).json(state.token);
     } catch (error) {
         console.log(error)
         res.status(400).json(error.message);
     }
 }
+
 module.exports = { logInController };
