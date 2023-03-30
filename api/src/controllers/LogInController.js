@@ -4,6 +4,8 @@ const { LogIn } = require("../handlers/LogInHandler");
 
 const logInController = async (req, res) => {
     const { name, password } = req.body;
+    console.log(req.body);
+    console.log(password);
 
     try {
         const state = await LogIn(name, password);
