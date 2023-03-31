@@ -38,7 +38,7 @@ router.post('/bankInfos', createBankInfoController)
 router.get('/donations', allDonationsController)
 router.get('/projects', allProjectsController)
 //----------------------------------------------------
-router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'https://client-pf-seven.vercel.app/login', session: false }), createDonationController)
+router.post('/donations', passport.authenticate('jwt', { failureRedirect: 'https://pf-client-d.vercel.app/login', session: false }), createDonationController)
 router.post('/create-payment', createPayment)
 router.get('/execute-payment', executePayment)
 router.get('/cancel-payment', cancelPayment)
@@ -51,7 +51,7 @@ router.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'], session: false }));
 
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'https://client-pf-seven.vercel.app/login', session: false }),
+  passport.authenticate('google', { failureRedirect: 'https://pf-client-d.vercel.app/home/login', session: false }),
   GoogleCallBackController
 );
 

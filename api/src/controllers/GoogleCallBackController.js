@@ -7,7 +7,7 @@ const GoogleCallBackController = (req, res) => {
   
     req.app.locals.GoogleToken = token.token
 
-    res.redirect('http://localhost:3000/home');
+    res.redirect('https://pf-client-d.vercel.app/home/home');
 }
 
 module.exports = { GoogleCallBackController }
