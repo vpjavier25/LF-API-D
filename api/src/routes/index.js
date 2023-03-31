@@ -44,24 +44,6 @@ router.get('/execute-payment', executePayment)
 router.get('/cancel-payment', cancelPayment)
 //------------------------------------------------------------------------
 router.post('/login', logInController);
-router.get('/login', (req, res) => {
-  res.cookie("value", req.app.locals.token, { httpOnly: false, maxAge: 1000 * 60 * 10, });
-  res.cookie("success", "true", { httpOnly: false, maxAge: 1000 * 60 * 10, });
-  res.redirect("http://localhost:3000/home");
-
-})//con esta ruta logro que las cookies lleguen al puerto 3000 luego de la verificacion con la ruta post
-
-//--------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-
-router.get("/logout", (req, res) =>{
-  res.clearCookie("value");
-  res.clearCookie("success");
-  res.redirect("http://localhost:3000/login");
-})//ruta para limpiar las cookies
-//------------------------------------------------------------------------------
-
 
 //--------------------------------------------------------------------------------------------------------------
 //google auth
@@ -73,6 +55,18 @@ router.get('/auth/google/callback',
   GoogleCallBackController
 );
 
+router.get('/google/token', (req, res)=>{
+  if (req.app.locals.GoogleToken){
+    res.status(200).json({token:req.app.locals.GoogleToken, origin: "google"})
+  }else{
+    res.status(200).json({msg:"not logged with google"})
+  }
+})
+
+router.get('/logOut/google', (req, res) => {
+  req.app.locals.GoogleToken = null
+  res.status(200).json({msg: "you are out"})
+})
 //--------------------------------------------------------------------------------------------------------------
 
 
