@@ -1,4 +1,4 @@
-const { getProjectById } = require("../handlers/GetProjectById")
+const { getProjectById } = require("../handlers/getProjectById")
 
 const projectsIdController = async (req, res) => {
     const { id } = req.querparams;
