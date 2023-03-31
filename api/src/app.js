@@ -18,10 +18,8 @@ require('./authWithGoogle/passport')(passport);
 
 server.use(passport.initialize());
 
-server.use(cors({
-  origin: 'https://pf-client-d.vercel.app/',
-  credentials: true}))
-
+server.use(cors())
+  
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
